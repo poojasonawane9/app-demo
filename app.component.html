@@ -1,0 +1,255 @@
+<div class="container-fluid">
+
+  <nav class="navbar navbar-expand-md bg-dark navbar-dark" id="nav">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <a class="navbar-brand" href="#">ToGo</a>
+    <div class="collapse navbar-collapse" id="collapsibleNavbar">
+      <ul class="navbar-nav navbar-right ml-auto">
+        <li class="nav-item ">
+          <a class="nav-link" routerLink="home">Home</a>
+        </li>
+
+
+        <li class="nav-item">
+          <a class="nav-link" routerLink="order">Order Food</a>
+
+        </li>
+
+
+
+        <li class="nav-item">
+
+          <a class="nav-link" href="#" data-toggle="modal" data-target="#myModal">Login</a>
+
+
+          <div class="modal fade" id="myModal">
+            <div class="modal-dialog">
+              <div class="modal-content">
+
+                <div class="modal-header">
+                  <h4 class="modal-title">Login Form</h4>
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+
+                <div class="modal-body">
+                  <div class="container">
+
+                    <form (ngSubmit)="login()">
+                      <div class="row">
+                        <div class="col-sm-6">
+                          <a href="https://github.com/login" title=""><img src="/assets/images/github logo.png"
+                              height="60px" width="60px" class="img-responsive" style="margin-left: 150px;"></a>
+                        </div>
+
+
+                        <div class="col-sm-6">
+                          <a href="https://www.linkedin.com/uas/login?trk=guest_homepage-basic_nav-header-signin"
+                            title=""><img src="/assets/images/linkedin logo.png" height="60px" width="60px"
+                              class="img-responsive" style="margin-bottom: 10px"></a>
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label for="email">Email:</label>
+                        <input type="email" class="form-control" id="email" placeholder="Enter email" name="email"
+                          required [(ngModel)]="user.email">
+                      </div>
+                      <div class="form-group">
+                        <label for="pwd">Password:</label>
+                        <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pswd"
+                          required [(ngModel)]="user.password">
+                      </div>
+                      <button type="submit" id="login" class="btn btn-primary">Login</button>
+                    </form>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="#" data-toggle="modal" data-target="#my">Create New Account</a>
+          <div class="modal fade" id="my">
+            <div class="modal-dialog">
+              <div class="modal-content">
+
+                <div class="modal-header">
+                  <h4 class="modal-title">Sign Up</h4>
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+
+                <div class="modal-body">
+                  <div class="container">
+
+                    <form (ngSubmit)="register()" #UserForm="ngForm">
+
+
+                      <div class="form-group">
+                        <label for="custName">Customer Name:</label>
+                        <input type="text" class="form-control" id="custName" placeholder="Enter your name" required
+                          [(ngModel)]="user.name" name="customer_name" #name="ngModel"
+                          [class.is.invalid]="name.touched && name.invalid" />
+                        <div class="text-danger" [class.d-none]="name.valid || name.untouched">
+                          Name is required
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label for="email">Email:</label>
+                        <input type="email" class="form-control" id="email" placeholder="Enter email" name="email"
+                          [(ngModel)]="user.email" required>
+                      </div>
+                      <div class="form-group">
+                        <label for="pwd">Password:</label>
+                        <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pswd"
+                          [(ngModel)]="user.password" required>
+                      </div>
+
+                      <div class="form-group">
+                        <label for="contact">Contact:</label>
+                        <input type="number" class="form-control" id="contact" placeholder="Enter your conatct number"
+                          [(ngModel)]="user.contact" name="phone" required [(ngModel)]="customer.contact"
+                          pattern="\d{10}$" #phone="ngModel" [class.is.invalid]="phone.touched && phone.invalid">
+                        <div *ngIf="phone.errors && (phone.touched)">
+                          <div class="text-danger" *ngIf="phone.errors?.required">Phone no. is required</div>
+                          <div class="text-danger" *ngIf="phone.errors?.pattern">Phone no. must be 10 digit</div>
+                        </div>
+                      </div>
+
+                      <div class="form-group">
+                        <label for="dob">Date Of Birth:</label>
+                        <input type="date" class="form-control" id="dob" placeholder="Enter your dob" name="dob"
+                          [(ngModel)]="user.date">
+                      </div>
+
+                      <button type="submit" class="btn btn-primary" [disabled]="UserForm.form.invalid">Sign Up</button>&nbsp;
+                      <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+
+                    </form>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="btn-group">
+    <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+      aria-expanded="false">
+      Profile
+    </button>
+    <div class="dropdown-menu">
+      <a class="dropdown-item" routerLink="profile">Profile</a>
+      <a class="dropdown-item" routerLink="setting">Settings</a>
+      <a class="dropdown-item" routerLink="track">Track Order</a>
+
+      <a class="dropdown-item" routerLink="home">Log out</a>
+
+    </div>
+  </div>
+
+
+
+  <img class=" w-100" src="/assets/images/r2.jpeg" alt="Third slide" height="650px">
+
+  <br><br>
+
+
+  <div class="container">
+
+    <div class="card-deck">
+      <div class="card ">
+        <img src="/assets/images/breakfast1.jpg" height=300 width=255 />
+        <div class="card-body text-center">
+
+          <p class="card-text" style="font-size: 20pt">Breakfast</p>
+
+        </div>
+      </div>
+      <div class="card ">
+        <img src="/assets/images/lunch1.jpg" height=300 width=255 />
+        <div class="card-body text-center">
+          <p class="card-text" style="font-size: 20pt">Lunch</p>
+        </div>
+      </div>
+      <div class="card ">
+        <img src="/assets/images/dinner.jpg" height=300 width=255 />
+        <div class="card-body text-center">
+          <p class="card-text" style="font-size: 20pt">Dinner</p>
+        </div>
+      </div>
+      <div class="card ">
+        <img src="/assets/images/tiffin.jpg" height=300 width=255 />
+        <div class="card-body text-center">
+          <p class="card-text" style="font-size: 20pt">Tiffin Services</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <router-outlet></router-outlet>
+
+  <br>
+  <br>
+  <div class="container-fluid">
+
+    <footer class="bg-dark" style="color:white">
+      <div class="container">
+        <div class="card-body">
+          <div class="row">
+            <div class="col-md-4 ">
+
+
+
+              <span>About App</span>
+              <br>
+              <span>
+                <a href="#">About Us</a>
+              </span>
+              <br>
+              <span>
+                <a href="#">Contact</a>
+              </span>
+            </div>
+
+
+
+
+            <div class="col-md-4 ">
+              <span>For Restaurants</span>
+              <br>
+              <span>
+                <a href="#">Add Restaurant</a>
+              </span>
+              <br>
+              <span>
+                <a href="#">Login Restaurant</a>
+              </span>
+            </div>
+
+            <div class="col-md-4 ">
+              <span>For Delivery Boy</span>
+              <br>
+              <span>
+                <a routerLink="/signup">Add Delivery Boy</a>
+              </span>
+              <br>
+              <span>
+                <a routerLink="/login">Login</a>
+              </span>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </footer>
+
+  </div>
